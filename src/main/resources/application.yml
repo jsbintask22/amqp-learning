@@ -1,0 +1,28 @@
+spring:
+  rabbitmq:
+    addresses: 139.199.228.154
+    port: 5672
+    virtual-host: /order
+    username: root
+    password: root
+
+    ## Ïû·ÑÕß
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 2
+        max-concurrency: 5
+        prefetch: 1
+    publisher-returns: true
+    publisher-confirm-type: CORRELATED
+    template:
+      mandatory: true
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: none
